@@ -186,7 +186,7 @@ def decode(
                 position_ids=position_ids,
                 inference_params=inference_params,
                 num_last_tokens=1,
-            ).logits.squeeze(dim=1)
+            ).squeeze(dim=1)
         else:
             logits = model._decoding_cache.run(
                 input_ids, position_ids, inference_params.seqlen_offset

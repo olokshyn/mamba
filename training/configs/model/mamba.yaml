@@ -1,0 +1,33 @@
+_target_: mamba_ssm.models.mixer_seq_simple.MambaLMHeadModel
+_recursive_: true
+config:
+  _target_: mamba_ssm.models.config_mamba.MambaConfig
+  # from https://huggingface.co/state-spaces/mamba-130m/blob/main/config.json
+  # also see https://huggingface.co/state-spaces/mamba-130m-hf/blob/main/config.json
+  d_model: 768
+  n_layer: 24
+  vocab_size: 50277
+  ssm_cfg:
+    # from the mambda_ssm_modules.mamba_simple.Mamba constructor
+    d_state: 16
+    d_conv: 4
+    expand: 2
+    dt_rank: "auto"
+    dt_min: 0.001
+    dt_max: 0.1
+    dt_init: "random"
+    dt_scale: 1.0
+    dt_init_floor: 0.0001
+    conv_bias: true
+    bias: false
+    use_fast_path: true
+  rms_norm: true
+  residual_in_fp32: true
+  fused_add_norm: true
+  pad_vocab_size_multiple: 8
+  tie_embeddings: true
+initializer_cfg:
+  # from mambda_ssm.models.mixer_seq_simple._init_weights
+  initializer_range: 0.02
+  rescale_prenorm_residual: True
+  n_residuals_per_layer: 1

@@ -1,8 +1,8 @@
 _target_: src.datamodules.language_modeling_hf.LMDataModule
-dataset_name: monology/pile-uncopyrighted
-dataset_config_name: null
+dataset_name: HuggingFaceFW/fineweb
+dataset_config_name: sample-10BT
 tokenizer_name: EleutherAI/gpt-neox-20b
-cache_dir: ${oc.env:DATA_DIR,${data_dir}}/the_pile/cache
+cache_dir: ${oc.env:DATA_DIR,${data_dir}}/fineweb/cache
 max_length: 2048
 add_eos: True
 batch_size: 16  # per GPU
